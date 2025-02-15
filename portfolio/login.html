@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+
+</head>
+
+<body>
+
+
+    <h1>Login</h1>
+    <script>
+        document.write("Hello")
+    </script>
+    <input type="text" id="uname" placeholder="enter username">
+    <br>
+    <input type="password" id="pwd" placeholder="enter password">
+    <br>
+    <button onclick="login()">login</button>
+    <br>
+    <h1 id="msg"></h1>
+
+    <button onclick="window.print()" >Print</button>
+
+    <script>
+
+        function login() {
+            var uname = document.getElementById("uname").value
+            var pwd = document.getElementById("pwd").value
+            var h1Ele = document.getElementById("msg")
+
+            if (uname == "") {
+                alert("please fill username first")
+               h1Ele.innerHTML = "please fill username first"
+                return
+            }
+
+            if (pwd == "") {
+                h1Ele.innerHTML = "please fill password first"
+            } else if (uname == "sdits" && pwd == "123") {
+                h1Ele.innerHTML = "login success"
+            } else {
+                h1Ele.innerHTML = "login failed"
+            }
+
+        }
+ 
+    </script>
+</body>
+
+</html>
