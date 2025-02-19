@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+
+<body>
+    <h1>Que. No. <span id="qno"></span> <span id="que"></span></h1>
+    A. <input name="options" type="radio" onclick="check()" /> <span id="op1"></span><br />
+    B. <input name="options" type="radio" onclick="check()" /> <span id="op2"></span><br />
+    C. <input name="options" type="radio" onclick="check()" /> <span id="op3"></span><br />
+    D. <input name="options" type="radio" onclick="check()" /> <span id="op4"></span><br />
+    <button onclick="next()"> Next </button>
+    <script>
+        var listOfQue = JSON.parse(localStorage.getItem("questions"))
+        var currentIndex = 0
+        var score = 0
+        setQuestion()
+        function setQuestion() {
+            var question = listOfQue[currentIndex]
+            document.getElementById("qno").innerHTML = currentIndex + 1
+            document.getElementById("que").innerHTML = question.quesion
+            document.getElementById("op1").innerHTML = question.a
+            document.getElementById("op2").innerHTML = question.b
+            document.getElementById("op3").innerHTML = question.c
+            document.getElementById("op4").innerHTML = question.d
+        }
+        function next() {
+            if (currentIndex < listOfQue.length) {
+                currentIndex++
+                setQuestion()
+            }else{
+                document.body.innerHTML="<h1>"+score+"</h1>"
+                alert("no more questions and your Score is="+score)
+            }
+
+        }
+        function check(){
+            var radioButtons = document.getElementsByName("options")
+            var op1Value = document.getElementById("op1").innerText
+            var op2Value = document.getElementById("op2").innerText
+            var op3Value = document.getElementById("op3").innerText
+            var op4Value = document.getElementById("op4").innerText
+            for(var i=0;i<4;i++){
+                var button = radioButtons[i]
+                if(i==0 && button.checked){
+                    if(listOfQue[currentIndex].ans==op1Value){
+                        score++
+                    }
+                }
+                if(i==1 && button.checked){
+                    if(listOfQue[currentIndex].ans==op2Value){
+                        score++
+                    }
+                }
+                if(i==2 && button.checked){
+                    if(listOfQue[currentIndex].ans==op3Value){
+                        score++
+                    }
+                }
+                if(i==3 && button.checked){
+                    if(listOfQue[currentIndex].ans==op4Value){
+                        score++
+                    }
+                }
+                
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>

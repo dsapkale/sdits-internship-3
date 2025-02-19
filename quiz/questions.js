@@ -1,4 +1,4 @@
-var listOfQue = JSON.parse(localStorage.getItem("questions"))
+var listOfQue = JSON.parse(localStorage.getItem("questions")) ?? []
 var anss = []
 // showQuestions()
 function saveQue() {
